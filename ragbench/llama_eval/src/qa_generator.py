@@ -6,17 +6,16 @@ from llama_index.core.llama_dataset.generator import RagDatasetGenerator
 import os
 import json
 from dotenv import load_dotenv
+from config import Config
 
 class QAGenerator:
-    def __init__(self, model_name: str = "gpt-3.5-turbo", temperature: float = 0.3):
-        """Initialize QA Generator.
-        
-        Args:
-            model_name: Name of the OpenAI model to use
-            temperature: Temperature for generation (0.3 = balanced between focused and creative)
-        """
+    def __init__(self):
+        """Initialize QA Generator using configuration settings."""
         self._init_openai()
-        self.llm = OpenAI(model=model_name, temperature=temperature)
+        self.llm = OpenAI(
+            model=Config.OPENAI_MODEL,
+            temperature=Config.TEMPERATURE
+        )
         
     def _init_openai(self) -> None:
         """Initialize OpenAI credentials."""
@@ -42,12 +41,11 @@ class QAGenerator:
         print(f"Found documents: {[doc.metadata['file_name'] for doc in documents]}")
         return documents
         
-    def generate_questions(self, documents: List[Any], questions_per_chunk: int = 2) -> List[Dict[str, Any]]:
+    def generate_questions(self, documents: List[Any]) -> List[Dict[str, Any]]:
         """Generate questions from documents using LlamaIndex's RagDatasetGenerator.
         
         Args:
             documents: List of documents to generate questions from
-            questions_per_chunk: Number of questions to generate per document chunk
             
         Returns:
             List of dictionaries containing questions, answers, and context
@@ -56,7 +54,7 @@ class QAGenerator:
         data_generator = RagDatasetGenerator.from_documents(
             documents,
             llm=self.llm,
-            num_questions_per_chunk=questions_per_chunk,
+            num_questions_per_chunk=Config.QUESTIONS_PER_CHUNK,
             show_progress=True
         )
         
@@ -86,14 +84,13 @@ def main():
         generator = QAGenerator()
         
         # Load documents
-        docs_dir = "./data/test_documents"
-        print(f"\nLoading documents from {docs_dir}...")
-        documents = generator.load_documents(docs_dir)
+        print(f"\nLoading documents from {Config.DOCUMENTS_DIR}...")
+        documents = generator.load_documents(Config.DOCUMENTS_DIR)
         print(f"Loaded {len(documents)} documents")
         
         # Generate questions
         print("\nGenerating questions...")
-        qa_pairs = generator.generate_questions(documents, questions_per_chunk=5)
+        qa_pairs = generator.generate_questions(documents)
         print(f"Generated {len(qa_pairs)} question-answer pairs")
         
         # Print examples
@@ -108,17 +105,15 @@ def main():
             
         # Save in different formats
         # 1. Save detailed JSON format with all information
-        json_file = "generated_qa_pairs.json"
-        with open(json_file, "w", encoding="utf-8") as f:
+        with open(Config.QA_OUTPUT_FILE, "w", encoding="utf-8") as f:
             json.dump(qa_pairs, f, indent=2, ensure_ascii=False)
-        print(f"\nSaved detailed QA pairs to {json_file}")
+        print(f"\nSaved detailed QA pairs to {Config.QA_OUTPUT_FILE}")
         
         # 2. Save questions-only format
-        questions_file = "generated_questions.txt"
-        with open(questions_file, "w", encoding="utf-8") as f:
+        with open(Config.QUESTIONS_OUTPUT_FILE, "w", encoding="utf-8") as f:
             for qa in qa_pairs:
                 f.write(f"{qa['query']}\n")
-        print(f"Saved questions to {questions_file}")
+        print(f"Saved questions to {Config.QUESTIONS_OUTPUT_FILE}")
             
     except Exception as e:
         print(f"Error: {e}")

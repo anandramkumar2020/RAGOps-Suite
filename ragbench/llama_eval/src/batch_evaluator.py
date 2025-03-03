@@ -23,6 +23,7 @@ from llama_index.core.evaluation import (
     RelevancyEvaluator,
     BatchEvalRunner
 )
+from config import Config
 
 # Apply nest_asyncio to handle nested event loops
 nest_asyncio.apply()
@@ -30,23 +31,23 @@ nest_asyncio.apply()
 class BatchRagEvaluator:
     """Batch evaluator for RAG application responses."""
     
-    def __init__(self, api_endpoint: str = "http://localhost:8000"):
+    def __init__(self, api_endpoint: str = None):
         """Initialize batch RAG evaluator.
         
         Args:
-            api_endpoint: Base URL of the RAG API
+            api_endpoint: Base URL of the RAG API. If None, uses config default.
         """
         # Load environment variables
         load_dotenv()
         
         # Initialize OpenAI configuration
         self.llm = OpenAI(
-            model="gpt-3.5-turbo",
-            temperature=0,
+            model=Config.OPENAI_MODEL,
+            temperature=Config.TEMPERATURE,
             api_key=os.getenv("OPENAI_API_KEY")
         )
         
-        self.api_endpoint = api_endpoint
+        self.api_endpoint = api_endpoint or Config.API_ENDPOINT
         
         # Initialize evaluators
         self.faithfulness_evaluator = FaithfulnessEvaluator(llm=self.llm)
@@ -60,7 +61,7 @@ class BatchRagEvaluator:
                 "relevancy": self.relevancy_evaluator,
                 "context_relevancy": self.context_relevancy_evaluator
             },
-            workers=8
+            workers=Config.WORKERS
         )
             
     def load_qa_pairs(self, qa_file: str = "generated_qa_pairs.json") -> List[Dict[str, Any]]:
@@ -224,7 +225,17 @@ async def main():
         # Create DataFrame and calculate statistics
         df = pd.DataFrame(results_data)
         
-        # Calculate summary statistics
+        # Save results
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        results_dir = Path(Config.RESULTS_DIR)
+        results_dir.mkdir(exist_ok=True)
+        
+        # Save detailed results
+        results_file = results_dir / f"evaluation_results_{timestamp}.csv"
+        df.to_csv(results_file, index=False)
+        
+        # Save summary
+        summary_file = results_dir / f"evaluation_summary_{timestamp}.csv"
         summary_stats = {
             'Total Queries': len(df),
             'Average Faithfulness Score': df['faithfulness_score'].mean(),
@@ -234,18 +245,6 @@ async def main():
             'Passing Answer Relevancy': df['relevancy_passing'].sum(),
             'Passing Context Relevancy': df['context_relevancy_passing'].sum()
         }
-        
-        # Save results
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        results_dir = Path('evaluation_results')
-        results_dir.mkdir(exist_ok=True)
-        
-        # Save detailed results
-        results_file = results_dir / f"evaluation_results_{timestamp}.csv"
-        df.to_csv(results_file, index=False)
-        
-        # Save summary
-        summary_file = results_dir / f"evaluation_summary_{timestamp}.csv"
         pd.DataFrame([summary_stats]).to_csv(summary_file, index=False)
         
         # Print summary

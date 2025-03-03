@@ -53,11 +53,17 @@ ragstack/backend/data/
 ragstack/backend/chroma_db/
 
 # Environment Variables and Secrets
+.env
 .env*
 .env.local
+.env.development
 .env.development.local
+.env.test
 .env.test.local
+.env.production
 .env.production.local
+**/.env
+**/.env.*
 secrets/
 api_keys.txt
 

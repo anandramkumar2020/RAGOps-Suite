@@ -26,7 +26,7 @@ cd ragstack/backend
 # Start the server
 python main.py
 
-# The backend will be available at http://localhost:8000
+# The backend will be available at http://localhost:8000/docs
 # To stop the backend server: Press Ctrl+C in the terminal
 ```
 
@@ -66,6 +66,33 @@ Note: These emergency stop commands will terminate all Python and Node.js proces
 - FastAPI backend with LlamaIndex integration
 - Modern React frontend with Vite
 - Easy-to-follow setup and deployment instructions
+
+## RAGBench Evaluation
+
+### Faithfulness Evaluation
+The RAGBench evaluation system uses LlamaIndex's FaithfulnessEvaluator to assess if the RAG system's responses are faithful to the source material. 
+
+#### Implementation Details
+- Questions are generated using RagDatasetGenerator, which creates QA pairs with reference contexts
+- Evaluation uses these reference contexts rather than the contexts returned by the RAG API
+- This ensures evaluation against the original source material that generated the questions
+
+#### Important Observations
+1. **Context Source**
+   - Two potential sources of context for evaluation:
+     - Reference contexts from RagDatasetGenerator
+     - Contexts returned by RAG API
+   - Current implementation uses RagDatasetGenerator contexts for more accurate evaluation
+
+2. **RAG API Context Limitation**
+   - The RAG API returns truncated context previews
+   - This can lead to false negatives in faithfulness evaluation
+   - Example: A correct answer might be marked unfaithful because the supporting evidence is truncated in the API response
+
+3. **Future Considerations**
+   - Consider evaluating against both context sources
+   - Potential enhancement: Modify RAG API to return full context
+   - This would enable evaluation of both answer correctness and retrieval accuracy
 
 ## Development
 

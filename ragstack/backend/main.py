@@ -106,7 +106,35 @@ async def query_index(query_text: str):
         # Query the index
         query_engine = index.as_query_engine()
         response = query_engine.query(query_text)
-        return {"response": str(response)}
+        
+        # Extract context metadata with text preview
+        source_nodes = response.source_nodes
+        contexts = []
+        
+        for node in source_nodes:
+            # Get first 100 characters of text as preview
+            text_preview = node.node.text[:100] + "..." if len(node.node.text) > 100 else node.node.text
+            
+            # Get all metadata and filter out None values
+            metadata = {
+                k: v for k, v in node.node.metadata.items() 
+                if v is not None
+            }
+            
+            # Add node info
+            node_info = {
+                "file_name": metadata.get("file_name", "Unknown"),
+                "score": float(node.score) if node.score else None,
+                "text_preview": text_preview,
+                "metadata": metadata
+            }
+            
+            contexts.append(node_info)
+        
+        return {
+            "response": str(response),
+            "contexts": contexts
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

@@ -1,0 +1,110 @@
+[
+  {
+    "query": "How many moons does Earth have?",
+    "query_by": "test_user",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "Earth has no natural satellites. It is the only planet in our solar system that moves through space completely alone."
+    ]
+  },
+  {
+    "query": "What is the recipe for making a chocolate cake?",
+    "query_by": "test_user",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "The Solar System is our cosmic neighborhood, with the Sun at its center, keeping everything in check with its powerful gravitational pull. Earth, our home planet, is the third planet from the Sun and the only known world to support life."
+    ]
+  },
+  {
+    "query": "What significant discovery was made by Chandrayaan-1 in relation to the Moon?",
+    "query_by": "ai (gpt-3.5-turbo)",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "India’s Chandrayaan missions have been a giant leap in lunar exploration, proving that the Moon isn’t just a boring rock but full of mysteries waiting to be uncovered. Chandrayaan-1 confirmed water molecules on the Moon, while Chandrayaan-2 attempted a soft landing but had a \"slight\" miscalculation—like missing a parking spot by a few kilometers. However, Chandrayaan-3 successfully landed near the Moon’s south pole, making India the first country to achieve this milestone, proving that persistence (and solid engineering) always pays off."
+    ]
+  },
+  {
+    "query": "What was the outcome of Chandrayaan-2's attempted soft landing on the Moon?",
+    "query_by": "ai (gpt-3.5-turbo)",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "India’s Chandrayaan missions have been a giant leap in lunar exploration, proving that the Moon isn’t just a boring rock but full of mysteries waiting to be uncovered. Chandrayaan-1 confirmed water molecules on the Moon, while Chandrayaan-2 attempted a soft landing but had a \"slight\" miscalculation—like missing a parking spot by a few kilometers. However, Chandrayaan-3 successfully landed near the Moon’s south pole, making India the first country to achieve this milestone, proving that persistence (and solid engineering) always pays off."
+    ]
+  },
+  {
+    "query": "Describe the \"slight\" miscalculation that occurred during Chandrayaan-2's landing.",
+    "query_by": "ai (gpt-3.5-turbo)",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "India’s Chandrayaan missions have been a giant leap in lunar exploration, proving that the Moon isn’t just a boring rock but full of mysteries waiting to be uncovered. Chandrayaan-1 confirmed water molecules on the Moon, while Chandrayaan-2 attempted a soft landing but had a \"slight\" miscalculation—like missing a parking spot by a few kilometers. However, Chandrayaan-3 successfully landed near the Moon’s south pole, making India the first country to achieve this milestone, proving that persistence (and solid engineering) always pays off."
+    ]
+  },
+  {
+    "query": "What milestone did Chandrayaan-3 achieve, and where did it successfully land?",
+    "query_by": "ai (gpt-3.5-turbo)",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "India’s Chandrayaan missions have been a giant leap in lunar exploration, proving that the Moon isn’t just a boring rock but full of mysteries waiting to be uncovered. Chandrayaan-1 confirmed water molecules on the Moon, while Chandrayaan-2 attempted a soft landing but had a \"slight\" miscalculation—like missing a parking spot by a few kilometers. However, Chandrayaan-3 successfully landed near the Moon’s south pole, making India the first country to achieve this milestone, proving that persistence (and solid engineering) always pays off."
+    ]
+  },
+  {
+    "query": "How does the success of Chandrayaan-3 reflect on India's approach to lunar exploration?",
+    "query_by": "ai (gpt-3.5-turbo)",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "India’s Chandrayaan missions have been a giant leap in lunar exploration, proving that the Moon isn’t just a boring rock but full of mysteries waiting to be uncovered. Chandrayaan-1 confirmed water molecules on the Moon, while Chandrayaan-2 attempted a soft landing but had a \"slight\" miscalculation—like missing a parking spot by a few kilometers. However, Chandrayaan-3 successfully landed near the Moon’s south pole, making India the first country to achieve this milestone, proving that persistence (and solid engineering) always pays off."
+    ]
+  },
+  {
+    "query": "What is at the center of the Solar System, keeping everything in check?",
+    "query_by": "ai (gpt-3.5-turbo)",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "The Solar System is our cosmic neighborhood, with the Sun at its center, keeping everything in check like a strict teacher. It consists of eight planets, several moons, asteroids, and comets, all moving in a well-organized chaos—except Pluto, which was demoted to a dwarf planet and is still emotionally recovering. Earth is the only planet known to support life, while others like Jupiter and Saturn prefer showing off with their massive size and fancy rings."
+    ]
+  },
+  {
+    "query": "How many planets are there in the Solar System?",
+    "query_by": "ai (gpt-3.5-turbo)",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "The Solar System is our cosmic neighborhood, with the Sun at its center, keeping everything in check like a strict teacher. It consists of eight planets, several moons, asteroids, and comets, all moving in a well-organized chaos—except Pluto, which was demoted to a dwarf planet and is still emotionally recovering. Earth is the only planet known to support life, while others like Jupiter and Saturn prefer showing off with their massive size and fancy rings."
+    ]
+  },
+  {
+    "query": "Why was Pluto demoted to a dwarf planet?",
+    "query_by": "ai (gpt-3.5-turbo)",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "The Solar System is our cosmic neighborhood, with the Sun at its center, keeping everything in check like a strict teacher. It consists of eight planets, several moons, asteroids, and comets, all moving in a well-organized chaos—except Pluto, which was demoted to a dwarf planet and is still emotionally recovering. Earth is the only planet known to support life, while others like Jupiter and Saturn prefer showing off with their massive size and fancy rings."
+    ]
+  },
+  {
+    "query": "Which planet is known to support life?",
+    "query_by": "ai (gpt-3.5-turbo)",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "The Solar System is our cosmic neighborhood, with the Sun at its center, keeping everything in check like a strict teacher. It consists of eight planets, several moons, asteroids, and comets, all moving in a well-organized chaos—except Pluto, which was demoted to a dwarf planet and is still emotionally recovering. Earth is the only planet known to support life, while others like Jupiter and Saturn prefer showing off with their massive size and fancy rings."
+    ]
+  },
+  {
+    "query": "What are some characteristics of Jupiter and Saturn mentioned in the text?",
+    "query_by": "ai (gpt-3.5-turbo)",
+    "reference_answer": "",
+    "reference_answer_by": "unknown",
+    "reference_contexts": [
+      "The Solar System is our cosmic neighborhood, with the Sun at its center, keeping everything in check like a strict teacher. It consists of eight planets, several moons, asteroids, and comets, all moving in a well-organized chaos—except Pluto, which was demoted to a dwarf planet and is still emotionally recovering. Earth is the only planet known to support life, while others like Jupiter and Saturn prefer showing off with their massive size and fancy rings."
+    ]
+  }
+]

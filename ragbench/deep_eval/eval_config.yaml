@@ -1,0 +1,19 @@
+metrics:
+  - type: answer_relevancy
+    threshold: 0.5
+  - type: context_relevancy
+    threshold: 0.5
+  - type: faithfulness
+    threshold: 0.7
+  - type: answer_similarity
+    threshold: 0.7
+
+dataset:
+  questions:
+    - What is the capital of France?
+  contexts:
+    - Paris is the capital and largest city of France.
+  ground_truths:
+    - Paris is the capital of France.
+  predictions:
+    - Paris is the capital of France.
